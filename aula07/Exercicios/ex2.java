@@ -2,7 +2,6 @@ package aula07.Exercicios;
 
 import java.util.Random;
 import java.util.Scanner;
-import java util.Random;
 
 public class ex2 {
     public static void main(String[] args) {
@@ -25,6 +24,6 @@ public class ex2 {
         } else if (sum == 2 || sum == 3 || sum == 12) {
             System.out.println("Você perdeu! jogue os dados novamente.");
         }
-        
+        scanner.close();  
     }
 }

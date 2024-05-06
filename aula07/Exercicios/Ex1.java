@@ -9,7 +9,7 @@ public class Ex1 {
         Random random = new Random();
         int randomNumber, playerNumber; 
         int tentativas = 0;
-        int palpite = 0;
+        
  
         randomNumber = random.nextInt(10);
         System.out.println("Digite um número de 0 até 10 para ver a sua sorte: ");
@@ -17,24 +17,32 @@ public class Ex1 {
 
         if (playerNumber == randomNumber) {
             System.out.println("Parabéns! você passou para a segunda fase!");
+            tentativas++;
         } else {
             System.out.println("Game Over! você não passou de fase :( " + "O número correto é: " + randomNumber); 
+            scanner.close();
+            return;
         }
 
-        while (palpite != randomNumber) {
-            System.out.print("Digite seu palpite: ");
-            palpite = scanner.nextInt();
-            tentativas++;
+       // Segunda fase
+       randomNumber = random.nextInt(10) + 1; // Novo número aleatório para a segunda fase
+       System.out.println("Bem-vindo à segunda fase! Digite um número de 0 até 10: ");
 
-            if (palpite < randomNumber) {
-                System.out.println("O número é maior. Tente novamente.");
-            } else if (palpite > randomNumber) {
-                System.out.println("O número é menor. Tente novamente.");
-            } else {
-                System.out.println("Parabéns! você acertou o número e passou para a fase 3.");
-            }
-        }
-        scanner.close();
-    }
+       while (true) {
+           playerNumber = scanner.nextInt();
+           tentativas++;
 
+           if (playerNumber < randomNumber) {
+               System.out.println("O número da sorte é maior. Tente novamente: ");
+           } else if (playerNumber > randomNumber) {
+               System.out.println("O número da sorte é menor. Tente novamente: ");
+           } else {
+               System.out.println("Parabéns! Você acertou em " + tentativas + " tentativa(s).");
+               break; // Saindo do loop quando o jogador acerta o número
+           }
+
+           // terceira fase
+       }
+       scanner.close(); // Fechando o scanner após o término do jogo
+   }
 }
